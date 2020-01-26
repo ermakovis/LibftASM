@@ -8,7 +8,7 @@ void	test_ft_bzero(void)
 	char 	line[10];
 	int		i;
 
-	memset(line, 1, 10);
+	ft_memset(line, 1, 10);
 	i = 0;
 	while (i < 10)
 		putchar(line[i++] + '0');
@@ -102,9 +102,10 @@ void	test_ft_tolowerupper(void)
 
 int		main(void)
 {
-	char *str;
-
-	ft_puts("QQQ");
+	char str[10];
+	
+	printf("%s\n", ft_memcpy(str, "HELLO\n", 6));
+	//ft_memset(str, '1', 10);
 	//test_ft_bzero();
 	//test_ft_isalpha();
 	//test_ft_isdigit();
