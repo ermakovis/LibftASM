@@ -1,48 +1,17 @@
-; ============================================================================ ;
-;                                                                              ;
-;    ██╗  ██╗██████╗                                                           ;
-;    ██║  ██║╚════██╗                                                          ;
-;    ███████║ █████╔╝              created by: mpillet                         ;
-;    ╚════██║██╔═══╝                       at: 2015-01-22 00:00:01             ;
-;         ██║███████╗                                                          ;
-;         ╚═╝╚══════╝                                                          ;
-;    ███████╗ █████╗ ██╗   ██╗ █████╗ ████████╗████████╗ █████╗ ███████╗       ;
-;    ╚══███╔╝██╔══██╗██║   ██║██╔══██╗╚══██╔══╝╚══██╔══╝██╔══██╗██╔════╝       ;
-;      ███╔╝ ███████║██║   ██║███████║   ██║      ██║   ███████║███████╗       ;
-;     ███╔╝  ██╔══██║╚██╗ ██╔╝██╔══██║   ██║      ██║   ██╔══██║╚════██║       ;
-;    ███████╗██║  ██║ ╚████╔╝ ██║  ██║   ██║      ██║   ██║  ██║███████║       ;
-;    ╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝╚══════╝       ;
-;                                                                              ;
-; ============================================================================ ;
-
-global ft_strlen
-
 section .text
+	global ft_strlen
 
 ft_strlen:
-	; prologue
-	push rbp
-	mov rbp, rsp
-	; core
-	cmp rdi, 0
-	je ifnull
-	push rdi
-	sub rcx, rcx
-	not rcx
-	sub al, al
-	cld
-	repne scasb
-	not rcx
-	dec rcx
-	mov rax, rcx
-	jmp end
+	mov	rax, 0
+	test rdi, rdi
+	jz exit
+	mov r9, rdi
+	
+ft_strlen_loop:
+	cmp byte[r9 + rax], 0
+	je exit
+	inc rax
+	jmp ft_strlen_loop
 
-ifnull:
-	mov rax, 0
-
-end:
-	pop rdi
-	; epilogue
-	mov rsp, rbp
-	pop rbp
+exit:
 	ret

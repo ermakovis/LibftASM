@@ -21,6 +21,15 @@ SRC_DIR=	./src
 OBJ_DIR=	./obj
 
 SRC_NAME= 	ft_bzero.s\
+			ft_isalpha.s\
+			ft_isdigit.s\
+			ft_isalnum.s\
+			ft_isprint.s\
+			ft_isascii.s\
+			ft_tolower.s\
+			ft_toupper.s\
+			ft_strcat.s\
+			ft_puts.s\
 			ft_putstr.s\
 			ft_strlen.s
 
